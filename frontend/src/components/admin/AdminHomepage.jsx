@@ -41,7 +41,7 @@ export default function Homepage({ mode }) {
 	const [productViewDetails, setProductViewDetails] = useState(null);
 	const handleProductPreviewBtn = product => {
 		setOpen(true);
-		setProductViewDetails(product)
+		setProductViewDetails(product);
 	};
 
 	return (
@@ -49,11 +49,12 @@ export default function Homepage({ mode }) {
 			<div className="relative min-h-screen min-w-screen">
 				<ProductPreview
 					open={open}
+					mode={mode}
 					setOpen={setOpen}
 					productViewDetails={productViewDetails}
 				/>
 				<AddProductForm
-				mode={mode}
+					mode={mode}
 					addProductMenu={addProductMenu}
 					setAddProductMenu={setAddProductMenu}
 				/>
@@ -99,12 +100,16 @@ export default function Homepage({ mode }) {
 														sx={{
 															display: 'flex',
 															backgroundColor: '#c8f7fab1',
-															px: 2,
+															px: { xs: 0, md: 2 },
+															width: { xs: 'fit', md: 'inherit' },
 															borderRadius: '2px',
 															flexDirection: { xs: 'column', md: 'row' },
 															alignSelf: 'center',
 															textAlign: 'center',
-															fontSize: 'clamp(1.2rem, 1vw, 2rem)',
+															fontSize: {
+																xs: 'clamp(1rem, 1vw, 2rem)',
+																md: 'clamp(1.2rem, 1vw, 2rem)',
+															},
 															fontWeight: '600',
 															opacity: '.9',
 														}}
@@ -114,7 +119,14 @@ export default function Homepage({ mode }) {
 												</Link>
 											</Typography>
 
-											<Typography sx={{ fontWeight: '600', mt: '4px' }}>
+											<Typography
+												sx={{
+													fontWeight: '600',
+													mt: '2px',
+													px: 1,
+													fontSize: { xs: 16, md: 16 },
+												}}
+											>
 												Price :&nbsp;
 												{product?.price}
 											</Typography>
@@ -146,6 +158,7 @@ export default function Homepage({ mode }) {
 													},
 													mt: '2px',
 													px: 1,
+													mt: 1,
 													backgroundColor: '#feb5adbb',
 													borderRadius: '10px',
 													height: 'fit',
@@ -165,15 +178,18 @@ export default function Homepage({ mode }) {
 										</Box>
 									</Box>
 									<Button
-										className="bottom-32 absolute px-3 w-full z-50  view-details-button"
-										sx={{ opacity: 0, transition: 'opacity 0.3s' }}
+										className="bottom-32 max-sm:bottom-36 absolute px-3 w-full z-50  view-details-button"
+										sx={{
+											opacity: { xs: 1, md: 0 },
+											transition: 'opacity 0.3s',
+										}}
 										onClick={() => handleProductPreviewBtn(product)}
 									>
 										<Typography
-											className="w-full m-auto rounded-lg py-1 "
+											className="w-full m-auto rounded-lg py-1 max-sm:py-2"
 											sx={{
 												backgroundColor: 'rgba(240, 248, 255, 0.393)',
-												fontSize: { xs: 2, md: 14 },
+												fontSize: { xs: 12, md: 14 },
 												backdropFilter: 'blur(2px)',
 												WebkitBackdropFilter: 'blur(2px)',
 												color: 'black',
@@ -188,7 +204,6 @@ export default function Homepage({ mode }) {
 					) : (
 						<Box
 							sx={{
-								
 								height: '60vh',
 								width: '100%',
 								margin: 'auto',
@@ -205,10 +220,16 @@ export default function Homepage({ mode }) {
 									textAlign: 'center',
 									fontSize: 'clamp(.6rem, 4vw, 2rem)',
 									fontWeight: '600',
-									textAlign:"center"
+									textAlign: 'center',
 								}}
 							>
-								<img src={noProductImg} width="300" className="m-auto" height="200" alt="" />
+								<img
+									src={noProductImg}
+									width="300"
+									className="m-auto"
+									height="200"
+									alt=""
+								/>
 								NO PRODUCTS !! ADD PRODUCTS
 							</Typography>
 						</Box>

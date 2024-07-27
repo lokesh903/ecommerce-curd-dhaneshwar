@@ -11,17 +11,6 @@ import { useDispatch } from 'react-redux';
 export default function LandingPage() {
 	const [mount, setMount] = useState(false);
 	const dispatch = useDispatch();
-	const [mode, setMode] = React.useState('dark');
-	const defaultTheme = createTheme({ palette: { mode } });
-
-	const toggleColorMode = () => {
-		setMode(prev => (prev === 'dark' ? 'light' : 'dark'));
-		// localStorage.setItem('mode', mode);
-	};
-	useEffect(() => {
-		localStorage.setItem('mode', mode);
-	}, [toggleColorMode]);
-
 	useEffect(() => {
 		setMount(true);
 	}, []);

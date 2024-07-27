@@ -2,7 +2,7 @@ import React from 'react';
 import WarningPng from '../../assets/images/warning.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncAllProduct } from '../../store/Actions/adminActions';
-import { Box } from '@mui/system';
+import { Box, Container } from '@mui/system';
 import {
 	Button,
 	FormControl,
@@ -15,20 +15,25 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const EditProductForm = ({ editProductForm, setEditProductForm, product }) => {
+const EditProductForm = ({
+	editProductForm,
+	mode,
+	setEditProductForm,
+	product,
+}) => {
 	const { isAuth, message, success, admin } = useSelector(
 		state => state.adminReducer
 	);
+	const intialEditValue = {
+		productName: product.productName,
+		price: '',
+		quantity: '',
+		description: '',
+		status: 'Available',
+	};
 	const [error, setError] = React.useState(null);
-	const [formValues, setFormValues] = React.useState({
-		firstname: '',
-		lastname: '',
-		email: '',
-		password: '',
-		contact: '',
-		city: '',
-		gender: '',
-	});
+	const [formValues, setFormValues] = React.useState(intialEditValue);
+	console.log(formValues);
 	const handleChange = e => {
 		setFormValues({ ...formValues, [e.target.name]: e.target.value });
 		setError(null);
@@ -71,12 +76,14 @@ const EditProductForm = ({ editProductForm, setEditProductForm, product }) => {
 			console.error('Error during signup:', error.message);
 		}
 	};
+	console.log(mode);
 	// console.log(product);
 	return (
-		<div
-			className={`bg-gray-400 px-3 ${
+		<Container
+			className={`${mode === 'light' ? 'red' : 'green'} rounded px-3 ${
 				editProductForm ? 'block' : 'hidden'
 			} transition-all absolute flex items-center justify-center w-full h-full top-0 left-0`}
+			backgroundColor={'primary'}
 		>
 			<Box
 				component="form"
@@ -84,96 +91,50 @@ const EditProductForm = ({ editProductForm, setEditProductForm, product }) => {
 				onSubmit={handleSubmitEditProductForm}
 				sx={{ mt: 3 }}
 			>
-				<Grid container spacing={2}>
-					<Grid item xs={5} sm={6}>
+				<Grid container spacing={0}>
+					<Grid item xs={6} sm={6}>
 						<TextField
 							value={formValues.firstname}
 							onChange={handleChange}
+							hiddenLabel
+							id="filled-hidden-label-small"
+							defaultValue={formValues.productName}
+							variant="filled"
+							size="small"
+							helperText="Product Name"
 							autoComplete="given-name"
 							name="firstname"
 							required
-							id="firstName"
-							label="First Name"
+							fullWidth
 							autoFocus
 						/>
 					</Grid>
 					<Grid item xs={5} sm={6}>
 						<TextField
-							value={formValues.lastname}
-							onChange={handleChange}
-							required
-							fullWidth
-							id="lastName"
-							label="Last Name"
-							name="lastname"
-							autoComplete="family-name"
+							hiddenLabel
+							id="filled-hidden-label-small"
+							defaultValue="Small"
+							variant="filled"
+							size="small"
+							helperText="Price"
 						/>
 					</Grid>
-					<Grid item xs={5}>
+					<Grid item xs={5} sm={6}>
 						<TextField
-							value={formValues.email}
-							onChange={handleChange}
-							required
-							fullWidth
-							id="email"
-							label="Email Address"
-							name="email"
-							autoComplete="email"
-						/>
-					</Grid>
-					<Grid item xs={5}>
-						<TextField
-							value={formValues.password}
-							onChange={handleChange}
-							required
-							fullWidth
-							name="password"
-							label="Password"
-							type="password"
-							id="password"
-							autoComplete="new-password"
-						/>
-					</Grid>
-					<Grid item="true" xs={5}>
-						<TextField
-							value={formValues.contact}
-							onChange={handleChange}
-							required
-							fullWidth
-							id="contactNumber"
-							label="Contact Number"
-							name="contact"
-							type="number"
-							autoComplete="family-name"
+							hiddenLabel
+							id="filled-hidden-label-small"
+							defaultValue="Small"
+							variant="filled"
+							size="small"
+							helperText="Quantity"
 						/>
 					</Grid>
 					<Grid item="true" xs={5} sm={6}>
 						<TextField
-							value={formValues.city}
-							onChange={handleChange}
-							required 
-							fullWidth 
-							id="cityName" 
-							label="City Name" 
-							name="city" 
-							autoComplete="family-name" 
+							id="standard-basic"
+							label="Standard"
+							variant="standard"
 						/>
-					</Grid>
-					<Grid item="true" xs={5} sm={6}>
-						<FormControl fullWidth>
-							<InputLabel id="demo-simple-select-label">Gender *</InputLabel>
-							<Select
-								labelId="demo-simple-select-label"
-								id="demo-simple-select"
-								value={formValues.gender}
-								label="Age"
-								name="gender"
-								onChange={handleChange}
-							>
-								<MenuItem value={'Male'}>Male</MenuItem>
-								<MenuItem value={'Female'}>Female</MenuItem>
-							</Select>
-						</FormControl>
 					</Grid>
 				</Grid>
 				<Typography
@@ -191,7 +152,7 @@ const EditProductForm = ({ editProductForm, setEditProductForm, product }) => {
 					{error}
 				</Typography>
 				<Button
- 					type="submit"
+					type="submit"
 					fullWidth
 					variant="contained"
 					sx={{ mt: 2, mb: 2 }}
@@ -212,7 +173,7 @@ const EditProductForm = ({ editProductForm, setEditProductForm, product }) => {
 					</Typography>
 				)}
 			</Box>
-		</div>
+		</Container>
 	);
 };
 

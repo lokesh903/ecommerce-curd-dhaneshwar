@@ -18,7 +18,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import ProductView from './components/admin/ProductView';
 
-function App() {
+function App({mode}) {
 	const { isAuth } = useSelector(state => state.adminReducer);
 	const dispatch = useDispatch();
 	// useEffect(() => {

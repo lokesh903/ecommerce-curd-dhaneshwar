@@ -7,7 +7,7 @@ import {
 	asyncCurrentAdmin,
 } from '../../store/Actions/adminActions';
 
-const AuthLayout = () => {
+const AuthLayout = ({mode}) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const { products, isAuth, admin, success, message } = useSelector(
