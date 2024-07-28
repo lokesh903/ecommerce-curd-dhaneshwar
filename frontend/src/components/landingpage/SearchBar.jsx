@@ -11,7 +11,7 @@ import {
 import { SearchErrorBox } from '../errors';
 import LoadingGif from '../../assets/images/loading.gif';
 
-const SearchBar = ({mode}) => {
+const SearchBar = ({ mode }) => {
 	const { products, admin, message, success, errors } = useSelector(
 		state => state.adminReducer
 	);
@@ -81,7 +81,7 @@ const SearchBar = ({mode}) => {
 						required={true}
 						onChange={handleSearchChange}
 						className={`pl-2 ml-1 max-sm:ml-2 w-[200px] pr-2 tracking-wider focus:invalid:bg-gray-50/10 focus:ring-0 border-none ${
-							mode==='light' ? 'text-black ' : 'text-white'
+							mode === 'light' ? 'text-black ' : 'text-white'
 						} font-semibold text-base py-2 max-sm:py-0 max-sm:w-2/3 max-sm:px-2 rounded-md flex-1 outline-none bg-transparent max-sm:placeholder:text-[11px] placeholder:text-gray-500 placeholder:w-[100%] `}
 					/>
 

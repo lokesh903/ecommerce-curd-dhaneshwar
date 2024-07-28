@@ -31,7 +31,7 @@ const Profile = () => {
 	// console.log(admin);
 	const navigate = useNavigate();
 	const handleLogout = () => {
-		console.log("logout");
+		console.log('logout');
 		dispatch(asyncLogoutAdmin());
 		navigate('/');
 	};

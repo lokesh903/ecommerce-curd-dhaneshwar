@@ -10,8 +10,7 @@ import Typography from '@mui/material/Typography';
 import FacebookIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/X';
-import SiteMarkImg  from '../../assets/svgs/sitemark.svg';
-
+import SiteMarkImg from '../../assets/svgs/sitemark.svg';
 
 const logoStyle = {
 	width: '140px',

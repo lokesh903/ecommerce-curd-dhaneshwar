@@ -49,7 +49,6 @@ export default function Homepage({ mode }) {
 			<div className="relative min-h-screen min-w-screen">
 				<ProductPreview
 					open={open}
-					mode={mode}
 					setOpen={setOpen}
 					productViewDetails={productViewDetails}
 				/>
@@ -100,16 +99,12 @@ export default function Homepage({ mode }) {
 														sx={{
 															display: 'flex',
 															backgroundColor: '#c8f7fab1',
-															px: { xs: 0, md: 2 },
-															width: { xs: 'fit', md: 'inherit' },
+															px: 2,
 															borderRadius: '2px',
 															flexDirection: { xs: 'column', md: 'row' },
 															alignSelf: 'center',
 															textAlign: 'center',
-															fontSize: {
-																xs: 'clamp(1rem, 1vw, 2rem)',
-																md: 'clamp(1.2rem, 1vw, 2rem)',
-															},
+															fontSize: 'clamp(1.2rem, 1vw, 2rem)',
 															fontWeight: '600',
 															opacity: '.9',
 														}}
@@ -119,14 +114,7 @@ export default function Homepage({ mode }) {
 												</Link>
 											</Typography>
 
-											<Typography
-												sx={{
-													fontWeight: '600',
-													mt: '2px',
-													px: 1,
-													fontSize: { xs: 16, md: 16 },
-												}}
-											>
+											<Typography sx={{ fontWeight: '600', mt: '4px' }}>
 												Price :&nbsp;
 												{product?.price}
 											</Typography>
@@ -158,7 +146,6 @@ export default function Homepage({ mode }) {
 													},
 													mt: '2px',
 													px: 1,
-													mt: 1,
 													backgroundColor: '#feb5adbb',
 													borderRadius: '10px',
 													height: 'fit',
@@ -178,18 +165,15 @@ export default function Homepage({ mode }) {
 										</Box>
 									</Box>
 									<Button
-										className="bottom-32 max-sm:bottom-36 absolute px-3 w-full z-50  view-details-button"
-										sx={{
-											opacity: { xs: 1, md: 0 },
-											transition: 'opacity 0.3s',
-										}}
+										className="bottom-32 absolute px-3 w-full z-50  view-details-button"
+										sx={{ opacity: 0, transition: 'opacity 0.3s' }}
 										onClick={() => handleProductPreviewBtn(product)}
 									>
 										<Typography
-											className="w-full m-auto rounded-lg py-1 max-sm:py-2"
+											className="w-full m-auto rounded-lg py-1 "
 											sx={{
 												backgroundColor: 'rgba(240, 248, 255, 0.393)',
-												fontSize: { xs: 12, md: 14 },
+												fontSize: { xs: 2, md: 14 },
 												backdropFilter: 'blur(2px)',
 												WebkitBackdropFilter: 'blur(2px)',
 												color: 'black',
@@ -220,7 +204,6 @@ export default function Homepage({ mode }) {
 									textAlign: 'center',
 									fontSize: 'clamp(.6rem, 4vw, 2rem)',
 									fontWeight: '600',
-									textAlign: 'center',
 								}}
 							>
 								<img

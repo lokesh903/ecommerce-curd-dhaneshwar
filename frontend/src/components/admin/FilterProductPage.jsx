@@ -19,7 +19,7 @@ import { useSelector } from 'react-redux';
 import noProductImg from '../../assets/images/noProducts.webp';
 import { filters, subCategories } from '../../utils/FnCollection';
 
-export default function FilterProductPage({ mode}) {
+export default function FilterProductPage({ mode }) {
 	const [mount, setMount] = useState(false);
 	const { products: allProducts } = useSelector(state => state.adminReducer);
 	const [navFilterbtn, setNavFilterbtn] = useState(true);
@@ -312,7 +312,6 @@ export default function FilterProductPage({ mode}) {
 												textAlign: 'center',
 												fontSize: 'clamp(.6rem, 4vw, 2rem)',
 												fontWeight: '600',
-												textAlign: 'center',
 											}}
 										>
 											<img

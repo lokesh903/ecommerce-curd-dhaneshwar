@@ -268,7 +268,6 @@ const NavFilter = ({ mode }) => {
 								))}
 							</TabPanels>
 						</TabGroup>
-
 					</DialogPanel>
 				</div>
 			</Dialog>
@@ -375,7 +374,6 @@ const NavFilter = ({ mode }) => {
 								))}
 							</div>
 						</PopoverGroup>
-
 					</div>
 				</div>
 			</nav>
